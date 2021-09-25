@@ -1,0 +1,10 @@
+.search-form {
+    border: 1px solid black;
+    border-radius: 2px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.margin-chop {
+    margin-top: 0px;
+}
