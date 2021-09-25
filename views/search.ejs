@@ -2,11 +2,11 @@
 
 
 
-<form class="col-6 row g-3 search-form">
+<form action="/search" method="POST" class="col-6 row g-3 search-form">
     <h3 class="text-center">Search</h3>
   <div class="col-12 margin-chop">
     <label for="inputAddress2" class="form-label">Card Name:</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Wrath of God...">
+    <input type="text" class="form-control" name="card" placeholder="Wrath of God...">
   </div>
 
     </div>
@@ -15,5 +15,7 @@
     <button type="submit" class="btn btn-primary">Search</button>
   </div>
 </form>
+
+ <img src="<%= card.img %>">
 
 <%- include("partials/footer") %>
