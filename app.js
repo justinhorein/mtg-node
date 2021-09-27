@@ -5,7 +5,12 @@ const express = require("express"),
                 bodyParser = require("body-parser"),
                 request = require('request'),
                 MongoClient = require('mongodb').MongoClient,
+                assert = require('assert'),
                 url = "mongodb://localhost:27017";
+
+app.set("view engine", "ejs");
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({extended: true}));
 
 function apiCall(url, callback){
     request(url, (error, response, body) => {
@@ -18,15 +23,23 @@ function apiCall(url, callback){
     });
 }
 
-app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({extended: true}));
+function findDocuments(db, callback) {
+        // Get the documents collection
+        let dbo = db.db("cards");
+        var collection = dbo.collection("deck");
+        // Find some documents
+        collection.find({}).toArray((err, docs) => {
+        assert.equal(err, null);
+        // console.log("Found the following records");
+        callback(docs);
+    })
+}
 
 app.get("/", (req, res) => {
-    let card = {
-        img: null
-    };
-    res.render("index", {card:card});
+    // let card = {
+    //     img: null
+    // };
+    res.render("index");
 })
 
 app.get("/search", (req, res) => {
@@ -56,7 +69,6 @@ app.post("/search", (req, res) => {
 })
 
 app.post("/addCard", (req, res) => {
-    // console.log(req.body.card);
 
     let card = {
         img: req.body.card
@@ -72,10 +84,25 @@ app.post("/addCard", (req, res) => {
         })
     })
 
-    res.render("index", {card:card});
+    res.render("index");
+})
+
+app.get("/deck", (req, res) => {
+
+    MongoClient.connect(url, (err, db) => {
+        if (err) {
+            res.render("error");
+        }
+        
+        findDocuments(db, (docs) => {
+            // console.log(docs);
+            res.render("deck", {deck:docs});
+        })
+        
+    })
 })
 
 let port = process.env.PORT || 3000;
 app.listen(port, function(){
-    console.log("Started Succesfully!")
+    console.log("Serving on: localhost:3000")
 })
