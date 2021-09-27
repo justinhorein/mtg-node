@@ -3,7 +3,9 @@ const express = require("express"),
                 app = express(),
                 path = require('path'),
                 bodyParser = require("body-parser"),
-                request = require('request');
+                request = require('request'),
+                MongoClient = require('mongodb').MongoClient,
+                url = "mongodb://localhost:27017";
 
 function apiCall(url, callback){
     request(url, (error, response, body) => {
@@ -51,6 +53,26 @@ app.post("/search", (req, res) => {
             res.render("search", {card:card});
         }
     })  
+})
+
+app.post("/addCard", (req, res) => {
+    // console.log(req.body.card);
+
+    let card = {
+        img: req.body.card
+    }
+
+    MongoClient.connect(url, (err, db) => {
+        if (err) throw err;
+        var dbo = db.db("cards");
+        dbo.collection("deck").insertOne(card, (err, res) => {
+            if (err) throw err;
+            console.log("1 Card Inserted");
+            db.close();
+        })
+    })
+
+    res.render("index", {card:card});
 })
 
 let port = process.env.PORT || 3000;
