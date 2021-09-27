@@ -1,3 +1,4 @@
+// App Configuration
 
 const express = require("express"),
                 app = express(),
@@ -11,6 +12,8 @@ const express = require("express"),
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true}));
+
+// Helper Functions
 
 function apiCall(url, callback){
     request(url, (error, response, body) => {
@@ -35,10 +38,13 @@ function findDocuments(db, callback) {
     })
 }
 
+// URL Paths
+
 app.get("/", (req, res) => {
 
     MongoClient.connect(url, (err, db) => {
         if (err) {
+            console.log("error!!");
             res.render("error");
         }
         
@@ -51,10 +57,12 @@ app.get("/", (req, res) => {
 })
 
 app.get("/search", (req, res) => {
-    let card = {
+    // Declare basic data 
+    var message = "";
+    var card = {
         img: null
     };
-    res.render("search", {card:card});
+    res.render("search", {card:card, message:message});
 })
 
 app.post("/search", (req, res) => {
@@ -63,15 +71,33 @@ app.post("/search", (req, res) => {
     let url = "https://api.scryfall.com/cards/search?q=" + cardName;
 
     apiCall(url, (err, body) => {
+        var message = "";
+        var card = {
+            img: null
+        };
+
         if(err){
             // console.log(err);
             res.render("error");
         } else {
-            let card = {
-                img: body.data[0].image_uris.normal
+            // If Card is returned
+            try {
+                card = {
+                    img: body.data[0].image_uris.normal
+                }
+                
+                // console.log(body.data[0].image_uris.normal);
+                res.render("search", {card:card, message:message});
             }
-            // console.log(body.data[0].image_uris.normal);
-            res.render("search", {card:card});
+            // If No Card is found
+            catch {
+                if (cardName != "") {
+                    message = "No card was found named: " + cardName;
+                } else {
+                    message = "You need to enter a card name";
+                }
+                res.render("search", {card:card, message:message});
+            }    
         }
     })  
 })

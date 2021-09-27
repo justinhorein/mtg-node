@@ -16,6 +16,10 @@
   </div>
 </form>
 
+<% if(message){ %>
+  <h2 class="text-center"><%= message %></h2>
+<% } %>
+
 <% if(card.img){ %>
 <form action="/addCard" method="POST">
   <img src="<%= card.img %>">
