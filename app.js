@@ -36,10 +36,18 @@ function findDocuments(db, callback) {
 }
 
 app.get("/", (req, res) => {
-    // let card = {
-    //     img: null
-    // };
-    res.render("index");
+
+    MongoClient.connect(url, (err, db) => {
+        if (err) {
+            res.render("error");
+        }
+        
+        findDocuments(db, (docs) => {
+            // console.log(docs);
+            res.render("deck", {deck:docs});
+        })
+        
+    })
 })
 
 app.get("/search", (req, res) => {
@@ -56,8 +64,8 @@ app.post("/search", (req, res) => {
 
     apiCall(url, (err, body) => {
         if(err){
-            console.log(err);
-            res.render("search");
+            // console.log(err);
+            res.render("error");
         } else {
             let card = {
                 img: body.data[0].image_uris.normal
@@ -84,23 +92,23 @@ app.post("/addCard", (req, res) => {
         })
     })
 
-    res.render("index");
+    res.redirect("/deck");
 })
 
-app.get("/deck", (req, res) => {
+// app.get("/deck", (req, res) => {
 
-    MongoClient.connect(url, (err, db) => {
-        if (err) {
-            res.render("error");
-        }
+//     MongoClient.connect(url, (err, db) => {
+//         if (err) {
+//             res.render("error");
+//         }
         
-        findDocuments(db, (docs) => {
-            // console.log(docs);
-            res.render("deck", {deck:docs});
-        })
+//         findDocuments(db, (docs) => {
+//             // console.log(docs);
+//             res.render("deck", {deck:docs});
+//         })
         
-    })
-})
+//     })
+// })
 
 let port = process.env.PORT || 3000;
 app.listen(port, function(){

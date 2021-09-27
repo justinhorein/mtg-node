@@ -16,12 +16,13 @@
   </div>
 </form>
 
+<% if(card.img){ %>
 <form action="/addCard" method="POST">
   <img src="<%= card.img %>">
 
   <input type="hidden" name="card" value="<%= card.img %>">
   <button type="submit" class="btn btn-danger">Add</button>
 </form>
- 
+ <% } %>
 
 <%- include("partials/footer") %>
