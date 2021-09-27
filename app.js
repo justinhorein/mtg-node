@@ -92,7 +92,7 @@ app.post("/addCard", (req, res) => {
         })
     })
 
-    res.redirect("/deck");
+    res.redirect("/");
 })
 
 // app.get("/deck", (req, res) => {
