@@ -1,11 +1,16 @@
 <%- include("partials/header") %>
-    
-<h2>Your Deck</h2>
 
+<div class="heading-container">
+      <div class="heading">Deck</div>
+</div>
+
+<div class="deck-container">
 <% deck.forEach(function(card) { %>
-   <img src="<%= card.img %>">
-<% }); %>
 
+      <img class="card-image" src="<%= card.img %>">
+
+<% }); %>
+</div>
 
 
 <%- include("partials/footer") %>

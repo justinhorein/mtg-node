@@ -8,3 +8,39 @@
 .margin-chop {
     margin-top: 0px;
 }
+
+.heading-container {
+    background-color: rgb(165, 165, 247);
+    height: 100px;
+}
+
+.heading {
+    text-align: center;
+    padding-top: 33px;
+    line-height: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    /* background-color: white; */
+    /* border-bottom: 2px solid black; */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.deck-container {
+    background-color: rgb(232, 232, 232);
+    padding: 20px 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card-image {
+    width: 300px;
+    height: auto;
+    margin: 5px;
+    border-radius: 13px;
+    justify-content: flex-end;
+}
