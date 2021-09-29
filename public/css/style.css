@@ -51,12 +51,23 @@ body {
     flex-wrap: wrap;
 }
 
+.card-container {
+    margin: 5px 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
 .card-image {
     width: 300px;
     height: auto;
     margin: 5px;
     border-radius: 13px;
     justify-content: flex-end;
+}
+
+.number-display {
+    margin-left: 10px;
+    font-size: 20px;
 }
 
 /* Search Page */
@@ -92,14 +103,19 @@ div.result-container form {
     display: inline;
 }
 
+.number-of-cards {
+    width: 18px;
+    transform: translateX(-45px);
+}
+
 /* Add Button */
 div.result-container form button.btn {
     margin: 10px 10px;
-    transform: translateX(-70px);
+    transform: translateX(-45px);
 }
 
 /* Cancel Button */
 div.result-container a button {
     margin: 10px 10px;
-    transform: translateX(-80px);
+    transform: translateX(50px);
 }

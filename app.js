@@ -105,7 +105,8 @@ app.post("/search", (req, res) => {
 app.post("/addCard", (req, res) => {
 
     let card = {
-        img: req.body.card
+        img: req.body.card,
+        number: req.body.number
     }
 
     MongoClient.connect(url, (err, db) => {

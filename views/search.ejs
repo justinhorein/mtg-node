@@ -27,13 +27,15 @@
     <div class="result-container">
 
       <img class="card-image" src="<%= card.img %>">
+      <div>
+        <form action="/addCard" method="POST">
 
-      <form action="/addCard" method="POST">
-
-        <input type="hidden" name="card" value="<%= card.img %>">
-        <button type="submit" class="btn btn-success">Add</button>
-      </form>
-        <a href="/search"><button class="btn btn-secondary">Cancel</button></a>
+          <input type="hidden" name="card" value="<%= card.img %>">
+          <input class="number-of-cards" type="text" name="number" value="1">
+          <button type="submit" class="btn btn-success">Add</button>
+        </form>
+          <a href="/search"><button class="btn btn-danger">Cancel</button></a>
+      </div>
     </div>
   <% } %>
 

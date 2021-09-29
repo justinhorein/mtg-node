@@ -8,9 +8,10 @@
       <div class="top-container">
             <div class="deck-container">
             <% deck.forEach(function(card) { %>
-
-                  <img class="card-image" src="<%= card.img %>">
-
+                  <div class="card-container">
+                        <img class="card-image" src="<%= card.img %>">
+                        <div class="number-display"># <%= card.number %></div>
+                  </div>
             <% }); %>
             </div>
       </div>
