@@ -4,13 +4,14 @@
       <div class="heading">Deck</div>
 </div>
 
-<div class="deck-container">
-<% deck.forEach(function(card) { %>
+<div class="top-container">
+      <div class="deck-container">
+      <% deck.forEach(function(card) { %>
 
-      <img class="card-image" src="<%= card.img %>">
+            <img class="card-image" src="<%= card.img %>">
 
-<% }); %>
+      <% }); %>
+      </div>
 </div>
-
 
 <%- include("partials/footer") %>
