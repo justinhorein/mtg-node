@@ -1,16 +1,17 @@
 :root {
     --background: rgb(121, 137, 253);
+    --light-grey: rgb(232, 232, 232);
 }
 
-.search-form {
-    border: 1px solid black;
-    border-radius: 2px;
-    margin: 20px auto;
-    padding: 10px;
+/* Deck Page */
+
+html {
+    background-color: var(--background);
+    height:max-content;
 }
 
-.margin-chop {
-    margin-top: 0px;
+body {
+    background-color: var(--background);
 }
 
 .heading-container {
@@ -40,13 +41,13 @@
 }
 
 .deck-container {
-    background-color: rgb(232, 232, 232);
+    background-color: var(--light-grey);
+    border-radius: 3px;
     padding: 20px 0px 20px 6.5%;
     width: 95%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    /* align-content: flex-end; */
     flex-wrap: wrap;
 }
 
@@ -56,4 +57,49 @@
     margin: 5px;
     border-radius: 13px;
     justify-content: flex-end;
+}
+
+/* Search Page */
+
+.search-form {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 2px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.margin-chop {
+    margin-top: 0px;
+}
+
+.top-result-container {
+    /* background-color: magenta; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.result-container {
+    background-color: var(--light-grey);
+    width: 340px;
+    /* border: 1px solid black; */
+    text-align: center;
+    border-radius: 3px;
+}
+
+div.result-container form {
+    display: inline;
+}
+
+/* Add Button */
+div.result-container form button.btn {
+    margin: 10px 10px;
+    transform: translateX(-70px);
+}
+
+/* Cancel Button */
+div.result-container a button {
+    margin: 10px 10px;
+    transform: translateX(-80px);
 }

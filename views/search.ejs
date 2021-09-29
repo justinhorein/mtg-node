@@ -20,14 +20,23 @@
   <h2 class="text-center"><%= message %></h2>
 <% } %>
 
-<% if(card.img){ %>
-<form action="/addCard" method="POST">
-  <img src="<%= card.img %>">
+<div class="top-result-container">
+  
 
-  <input type="hidden" name="card" value="<%= card.img %>">
-  <button type="submit" class="btn btn-success">Add</button>
-</form>
-  <a href="/search"><button class="btn btn-secondary">Cancel</button></a>
- <% } %>
+  <% if(card.img){ %>
+    <div class="result-container">
+
+      <img class="card-image" src="<%= card.img %>">
+
+      <form action="/addCard" method="POST">
+
+        <input type="hidden" name="card" value="<%= card.img %>">
+        <button type="submit" class="btn btn-success">Add</button>
+      </form>
+        <a href="/search"><button class="btn btn-secondary">Cancel</button></a>
+    </div>
+  <% } %>
+
+</div>
 
 <%- include("partials/footer") %>
