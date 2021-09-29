@@ -10,7 +10,13 @@
             <% deck.forEach(function(card) { %>
                   <div class="card-container">
                         <img class="card-image" src="<%= card.img %>">
-                        <div class="number-display"># <%= card.number %></div>
+                        <div class="number-container">
+                              <%= card.number %>
+                              <input class="number-display" type="hidden" value="<%= card.number %>" readonly>
+                              <i class="fas fa-angle-up"></i>
+                              <i class="fas fa-angle-down"></i>
+                        </div>
+                        
                   </div>
             <% }); %>
             </div>

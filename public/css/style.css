@@ -65,9 +65,24 @@ body {
     justify-content: flex-end;
 }
 
-.number-display {
-    margin-left: 10px;
+.number-container {
+    margin-left: 12px;
     font-size: 20px;
+}
+
+.number-display {
+    margin: 0px 0px 5px 0px;
+    font-size: 18px;
+    width: 18px;
+}
+
+.fa-angle-up {
+    /* margin-left: 2px; */
+    transform: translateY(-5px);
+}
+
+.fa-angle-down {
+    transform: translate(-18px, 7px);
 }
 
 /* Search Page */
