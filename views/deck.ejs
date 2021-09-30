@@ -11,10 +11,10 @@
                   <div class="card-container">
                         <img class="card-image" src="<%= card.img %>">
                         <div class="number-container">
-                              <%= card.number %>
+                              <span class="number-show"><%= card.number %></span>
                               <input class="number-display" type="hidden" value="<%= card.number %>" readonly>
-                              <i class="fas fa-angle-up"></i>
-                              <i class="fas fa-angle-down"></i>
+                              <i onclick="plus()" class="fas fa-angle-up"></i>
+                              <i onclick="minus()" class="fas fa-angle-down"></i>
                         </div>
                         
                   </div>

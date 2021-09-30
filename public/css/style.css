@@ -66,23 +66,30 @@ body {
 }
 
 .number-container {
-    margin-left: 12px;
+    margin: 0px 12px 8px 0px;
+
     font-size: 20px;
 }
 
+.number-show {
+    margin: 15px 0px 15px 15px;
+}
+
 .number-display {
-    margin: 0px 0px 5px 0px;
+    margin: 0px -2px -10px -5px;
     font-size: 18px;
     width: 18px;
 }
 
 .fa-angle-up {
     /* margin-left: 2px; */
-    transform: translateY(-5px);
+    transform: translate(5px,-5px);
+    color: black;
 }
 
 .fa-angle-down {
-    transform: translate(-18px, 7px);
+    transform: translate(-13px, 7px);
+    color: black;
 }
 
 /* Search Page */

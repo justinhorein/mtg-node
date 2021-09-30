@@ -122,20 +122,7 @@ app.post("/addCard", (req, res) => {
     res.redirect("/");
 })
 
-// app.get("/deck", (req, res) => {
 
-//     MongoClient.connect(url, (err, db) => {
-//         if (err) {
-//             res.render("error");
-//         }
-        
-//         findDocuments(db, (docs) => {
-//             // console.log(docs);
-//             res.render("deck", {deck:docs});
-//         })
-        
-//     })
-// })
 
 let port = process.env.PORT || 3000;
 app.listen(port, function(){
