@@ -32,6 +32,8 @@
 
           <input type="hidden" name="card" value="<%= card.img %>">
           <input class="number-of-cards" type="text" name="number" value="1">
+          <i onclick="plusSearch('<%= card._id %>')" class="fas fa-angle-up search"></i>
+          <i onclick="minusSearch('<%= card._id %>')" class="fas fa-angle-down search"></i>
           <button type="submit" class="btn btn-success">Add</button>
         </form>
           <a href="/search"><button class="btn btn-danger">Cancel</button></a>

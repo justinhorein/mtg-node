@@ -12,6 +12,7 @@ html {
 
 body {
     background-color: var(--background);
+    padding-bottom: 40px;
 }
 
 .heading-container {
@@ -83,7 +84,7 @@ body {
 
 .fa-angle-up {
     /* margin-left: 2px; */
-    transform: translate(5px,-5px);
+    transform: translate(4px,-5px);
     color: black;
 }
 
@@ -129,6 +130,20 @@ div.result-container form {
     width: 18px;
     transform: translateX(-45px);
 }
+
+/* Up Down Search Page */
+
+.fa-angle-up.search {
+    /* margin-left: 2px; */
+    transform: translate(-41px,-5px);
+    color: black;
+}
+
+.fa-angle-down.search {
+    transform: translate(-55px, 7px);
+    color: black;
+}
+
 
 /* Add Button */
 div.result-container form button.btn {

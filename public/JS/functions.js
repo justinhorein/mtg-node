@@ -1,3 +1,5 @@
+const nodemon = require("nodemon");
+
 function plus(id) {
     let display = document.getElementById(id);
     let span = display.children[0];
@@ -19,5 +21,22 @@ function minus(id) {
     if (input.value > 0){
         let newValue = String(parseInt(input.value) - 1);
         display.children[1].value = newValue;
+    }
+}
+
+function plusSearch(id) {
+    // alert("shut up");
+    let display = document.querySelector("input.number-of-cards");
+    if (display.value < 4){
+        let newValue = String(parseInt(display.value) + 1);
+        display.value = newValue;
+    } 
+}
+
+function minusSearch(id) {
+    let display = document.querySelector("input.number-of-cards");
+    if (display.value > 0){
+        let newValue = String(parseInt(display.value) - 1);
+        display.value = newValue;
     }
 }
