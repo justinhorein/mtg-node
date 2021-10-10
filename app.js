@@ -131,8 +131,32 @@ app.post("/update", (req, res) => {
         number: req.body.number
     }
 
-    
+    if (card.number <= 0) {
+        MongoClient.connect(url, (err, db) => {
+            if (err) throw err;
+            var dbo = db.db("cards");
+            dbo.collection("deck").deleteOne({img:card.img}, (err, res) => {
+                if (err) throw err;
+                console.log("1 Card Deleted");
+                db.close();
+            })
+        })
+    } 
+    else if (card.number <=4) {
+        MongoClient.connect(url, (err, db) => {
+            if (err) throw err;
+            var dbo = db.db("cards");
+            dbo.collection("deck").updateOne({img:card.img}, {$set: card}, { upsert: true}, (err, res) => {
+                if (err) throw err;
+                console.log("1 Card Updated");
+                db.close();
+            })
+        })
+    }
 
+
+
+    res.redirect("/");
 })
 
 
