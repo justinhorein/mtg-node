@@ -144,32 +144,36 @@ body {
 }
 
 .result-container {
-    background-color: var(--light-grey);
-    width: 340px;
+    background-color: var(--background);
+    width: 100%;
     /* border: 1px solid black; */
     text-align: center;
     border-radius: 3px;
+    display: flex;
+    justify-content: center;
 }
 
 div.result-container form {
     display: inline;
 }
 
+/* Number Display */
+
 .number-of-cards {
     width: 18px;
-    transform: translateX(-45px);
+    transform: translateX(-36px);
 }
 
 /* Up Down Search Page */
 
 .fa-angle-up.search {
     /* margin-left: 2px; */
-    transform: translate(-41px,-5px);
+    transform: translate(-36px,-5px);
     color: black;
 }
 
 .fa-angle-down.search {
-    transform: translate(-55px, 7px);
+    transform: translate(-50px, 7px);
     color: black;
 }
 
@@ -177,11 +181,19 @@ div.result-container form {
 /* Add Button */
 div.result-container form button.btn {
     margin: 10px 10px;
-    transform: translateX(-45px);
+    transform: translateX(-50px);
 }
 
 /* Cancel Button */
-div.result-container a button {
+div.result-container button {
     margin: 10px 10px;
-    transform: translateX(50px);
+    transform: translateX(40px);
+}
+
+.card-search-container {
+    width: 325px;
+    background-color: var(--light-grey);
+    border: 1px solid black;
+    border-radius: 2px;
+    margin: 0px 10px;
 }

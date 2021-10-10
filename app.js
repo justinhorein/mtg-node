@@ -87,7 +87,7 @@ app.post("/search", (req, res) => {
                 // }
 
                 body.data.forEach((c) => {
-                    console.log(c);
+                    // console.log(c);
                     var card = {
                         img: null
                     };

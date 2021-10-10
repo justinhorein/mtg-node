@@ -26,17 +26,19 @@
   <% if(deck){ %>
     <div class="result-container">
       <% deck.forEach((card) => { %>
-        <img class="card-image" src="<%= card.img %>">
-        <div>
-          <form action="/addCard" method="POST">
+        <div class="card-search-container" id="<%= card.img %>">
+          <img class="card-image" src="<%= card.img %>">
+          <div>
+            <form action="/addCard" method="POST">
 
-            <input type="hidden" name="card" value="<%= card.img %>">
-            <input class="number-of-cards" type="text" name="number" value="1">
-            <i onclick="plusSearch('<%= card._id %>')" class="fas fa-angle-up search"></i>
-            <i onclick="minusSearch('<%= card._id %>')" class="fas fa-angle-down search"></i>
-            <button type="submit" class="btn btn-success">Add</button>
-          </form>
-            <a href="/search"><button class="btn btn-danger">Cancel</button></a>
+              <input type="hidden" name="card" value="<%= card.img %>">
+              <input class="number-of-cards" type="text" name="number" value="1">
+              <i onclick="plusSearch('<%= card.img %>')" class="fas fa-angle-up search"></i>
+              <i onclick="minusSearch('<%= card.img %>')" class="fas fa-angle-down search"></i>
+              <button type="submit" class="btn btn-success">Add</button>
+            </form>
+              <button onclick="hideCard('<%= card.img %>')" class="btn btn-danger">Cancel</button>
+          </div>
         </div>
       <% }) %>
     </div>
@@ -44,4 +46,5 @@
 
 </div>
 
+<script src="JS/search.js"></script>
 <%- include("partials/footer") %>
