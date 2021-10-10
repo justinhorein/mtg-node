@@ -59,10 +59,11 @@ app.get("/", (req, res) => {
 app.get("/search", (req, res) => {
     // Declare basic data 
     var message = "";
+    var deck = [];
     var card = {
         img: null
     };
-    res.render("search", {card:card, message:message});
+    res.render("search", {deck:deck, message:message});
 })
 
 app.post("/search", (req, res) => {
@@ -72,9 +73,7 @@ app.post("/search", (req, res) => {
 
     apiCall(url, (err, body) => {
         var message = "";
-        var card = {
-            img: null
-        };
+        var deck = [];
 
         if(err){
             // console.log(err);
@@ -82,12 +81,22 @@ app.post("/search", (req, res) => {
         } else {
             // If Card is returned
             try {
-                card = {
-                    img: body.data[0].image_uris.normal
-                }
+                // console.log(body.data);
+                // card = {
+                //     img: ""
+                // }
+
+                body.data.forEach((c) => {
+                    console.log(c);
+                    var card = {
+                        img: null
+                    };
+                    card.img = c.image_uris.normal;
+                    deck.push(card);
+                })
                 
                 // console.log(body.data[0].image_uris.normal);
-                res.render("search", {card:card, message:message});
+                res.render("search", {deck:deck, message:message});
             }
             // If No Card is found
             catch {
@@ -96,7 +105,7 @@ app.post("/search", (req, res) => {
                 } else {
                     message = "You need to enter a card name";
                 }
-                res.render("search", {card:card, message:message});
+                res.render("search", {deck:deck, message:message});
             }    
         }
     })  
