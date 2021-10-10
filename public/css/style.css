@@ -93,6 +93,20 @@ body {
     color: black;
 }
 
+.delete-button {
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 1px;
+    box-shadow: .5px .5px 2px .5px grey;
+}
+
+.delete-button:hover {
+    color: black;
+    border: 1px solid grey;
+
 /* Search Page */
 
 .search-form {

@@ -124,6 +124,16 @@ app.post("/addCard", (req, res) => {
     res.redirect("/");
 })
 
+app.post("/update", (req, res) => {
+
+    let card = {
+        img: req.body.card,
+        number: req.body.number
+    }
+
+    
+
+})
 
 
 let port = process.env.PORT || 3000;

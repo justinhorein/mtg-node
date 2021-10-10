@@ -10,11 +10,15 @@
             <% deck.forEach(function(card) { %>
                   <div class="card-container">
                         <img class="card-image" src="<%= card.img %>">
-                        <div class="number-container" id="<%= card._id %>">
-                              <span class="number-show"><%= card.number %></span>
-                              <input class="number-display" type="hidden" value="<%= card.number %>" readonly>
-                              <i onclick="plus('<%= card._id %>')" class="fas fa-angle-up"></i>
-                              <i onclick="minus('<%= card._id %>')" class="fas fa-angle-down"></i>
+                        <div class="number-container" id="<%= card._id %>">                             
+                              <form action="/update" method="POST">
+                                    <span class="number-show"><%= card.number %></span>
+                                    <input class="number-display" name="number" type="hidden" value="<%= card.number %>" readonly>
+                                    <input type="hidden" name="card" value="<%= card.img %>">
+                                    <i onclick="plus('<%= card._id %>')" class="fas fa-angle-up"></i>
+                                    <i onclick="minus('<%= card._id %>')" class="fas fa-angle-down"></i>
+                                    <input type="submit" value="update" class="delete-button" href="/delete"></input>
+                              </form>
                         </div>
                         
                   </div>
