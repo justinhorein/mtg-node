@@ -38,3 +38,14 @@ function minusSearch(id) {
         display.value = newValue;
     }
 }
+
+onload = () => {
+    let numbers = document.querySelectorAll(".number-show");
+    let total = 0;
+    numbers.forEach((n) => {
+        total += parseInt(n.innerHTML);
+    });
+
+    let display = document.querySelector(".dashboard");
+    display.innerText = "Cards: " + total;
+}

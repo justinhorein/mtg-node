@@ -17,20 +17,34 @@ body {
 
 .heading-container {
     background-color: var(--background);
-    height: 100px;
+    height: 80px;
+    text-align: center;
+    margin-bottom: 5px;
 }
 
 .heading {
     text-align: center;
     padding-top: 33px;
     line-height: 30px;
-    font-size: 30px;
+    font-size: 38px;
     font-weight: bold;
     color: white;
     /* background-color: white; */
     /* border-bottom: 2px solid black; */
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
+}
+
+.dashboard-container {
+    text-align: center;
+    height: 45px;
+}
+
+.dashboard {
+    background-color: white;
+    margin: auto;
+    padding: 1px 4px;
+    font-size: 16px;
 }
 
 .top-container {
