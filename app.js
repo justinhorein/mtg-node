@@ -109,16 +109,18 @@ app.post("/addCard", (req, res) => {
         number: req.body.number
     }
 
-    MongoClient.connect(url, (err, db) => {
-        if (err) throw err;
-        var dbo = db.db("cards");
-        dbo.collection("deck").insertOne(card, (err, res) => {
+    if (card.number > 0 && card.number < 5){
+        MongoClient.connect(url, (err, db) => {
             if (err) throw err;
-            console.log("1 Card Inserted");
-            db.close();
+            var dbo = db.db("cards");
+            dbo.collection("deck").insertOne(card, (err, res) => {
+                if (err) throw err;
+                console.log("1 Card Inserted");
+                db.close();
+            })
         })
-    })
-
+    }
+    
     res.redirect("/");
 })
 

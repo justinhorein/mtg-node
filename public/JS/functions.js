@@ -1,5 +1,3 @@
-const nodemon = require("nodemon");
-
 function plus(id) {
     let display = document.getElementById(id);
     let span = display.children[0];
@@ -35,7 +33,7 @@ function plusSearch(id) {
 
 function minusSearch(id) {
     let display = document.querySelector("input.number-of-cards");
-    if (display.value > 0){
+    if (display.value > 1){
         let newValue = String(parseInt(display.value) - 1);
         display.value = newValue;
     }
