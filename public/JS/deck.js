@@ -19,6 +19,8 @@ function plus(id) {
     let newValue = String(parseInt(input.value) + 1);
     display.children[0].children[1].value = newValue;
     }
+    let del = display.children[0].children[5];
+    del.style.display = "inline";
 }
 
 function minus(id) {
@@ -31,4 +33,6 @@ function minus(id) {
         let newValue = String(parseInt(input.value) - 1);
         display.children[0].children[1].value = newValue;
     }
+    let del = display.children[0].children[5];
+    del.style.display = "inline";
 }

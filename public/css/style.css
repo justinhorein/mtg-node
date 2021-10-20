@@ -107,7 +107,8 @@ body {
     color: black;
 }
 
-.delete-button {
+.update-button {
+    display: none;
     text-decoration: none;
     font-size: 14px;
     color: black;
@@ -117,7 +118,7 @@ body {
     box-shadow: .5px .5px 2px .5px grey;
 }
 
-.delete-button:hover {
+.update-button:hover {
     color: black;
     border: 1px solid grey;
 }
