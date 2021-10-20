@@ -139,9 +139,11 @@ body {
 
 .top-result-container {
     /* background-color: magenta; */
+    width: fit-content;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    flex-wrap: nowrap;
 }
 
 .result-container {
@@ -152,6 +154,7 @@ body {
     border-radius: 3px;
     display: flex;
     justify-content: center;
+    flex-wrap: nowrap;
 }
 
 div.result-container form {

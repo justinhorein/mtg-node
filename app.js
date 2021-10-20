@@ -113,24 +113,42 @@ app.post("/search", (req, res) => {
 
 app.post("/addCard", (req, res) => {
 
+    var deck = [];
     let card = {
         img: req.body.card,
         number: req.body.number
     }
+    deck.push(card);
 
     if (card.number > 0 && card.number < 5){
         MongoClient.connect(url, (err, db) => {
             if (err) throw err;
             var dbo = db.db("cards");
-            dbo.collection("deck").insertOne(card, (err, res) => {
-                if (err) throw err;
-                console.log("1 Card Inserted");
-                db.close();
-            })
+
+
+            // Check to see if card isn't already in deck
+            var sameCard;
+            findDocuments(db, (docs) => {
+                docs.forEach((deckCard) => {
+                    if (deckCard.img == card.img){
+                        return sameCard = true;
+                    }
+                })
+            })  
+
+            if (sameCard == false){
+                dbo.collection("deck").insertOne(card, (err, res) => {
+                    if (err) throw err;
+                    console.log("1 Card Inserted");
+                    db.close();
+                    })
+                    res.redirect("/");
+            } else {
+                let message = "This card is already in your deck!";
+                res.render("search", {deck: deck, message:message});  
+            }  
         })
-    }
-    
-    res.redirect("/");
+    }   
 })
 
 app.post("/update", (req, res) => {
