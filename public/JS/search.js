@@ -19,4 +19,6 @@ function minusSearch(img) {
 function hideCard(img) {
     let card = document.getElementById(img);
     card.style.display = "none";
+    let message = document.querySelector(".message");
+    message.style.display = "none";
 }
