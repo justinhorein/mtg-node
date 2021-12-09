@@ -127,7 +127,7 @@ app.post("/addCard", (req, res) => {
 
 
             // Check to see if card isn't already in deck
-            var sameCard;
+            var sameCard = false;
             findDocuments(db, (docs) => {
                 docs.forEach((deckCard) => {
                     if (deckCard.img == card.img){
