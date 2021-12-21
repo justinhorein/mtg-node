@@ -29,7 +29,7 @@ function apiCall(url, callback){
 function findDocuments(db, callback) {
         // Get the documents collection
         let dbo = db.db("cards");
-        var collection = dbo.collection("deck");
+        var collection = dbo.collection("deck-node");
         // Find some documents
         collection.find({}).toArray((err, docs) => {
         assert.equal(err, null);
@@ -137,7 +137,7 @@ app.post("/addCard", (req, res) => {
             })  
 
             if (sameCard == false){
-                dbo.collection("deck").insertOne(card, (err, res) => {
+                dbo.collection("deck-node").insertOne(card, (err, res) => {
                     if (err) throw err;
                     console.log("1 Card Inserted");
                     db.close();
@@ -162,7 +162,7 @@ app.post("/update", (req, res) => {
         MongoClient.connect(url, (err, db) => {
             if (err) throw err;
             var dbo = db.db("cards");
-            dbo.collection("deck").deleteOne({img:card.img}, (err, res) => {
+            dbo.collection("deck-node").deleteOne({img:card.img}, (err, res) => {
                 if (err) throw err;
                 console.log("1 Card Deleted");
                 db.close();
@@ -173,7 +173,7 @@ app.post("/update", (req, res) => {
         MongoClient.connect(url, (err, db) => {
             if (err) throw err;
             var dbo = db.db("cards");
-            dbo.collection("deck").updateOne({img:card.img}, {$set: card}, { upsert: true}, (err, res) => {
+            dbo.collection("deck-node").updateOne({img:card.img}, {$set: card}, { upsert: true}, (err, res) => {
                 if (err) throw err;
                 console.log("1 Card Updated");
                 db.close();
