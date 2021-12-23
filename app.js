@@ -127,26 +127,30 @@ app.post("/addCard", (req, res) => {
 
 
             // Check to see if card isn't already in deck
-            var sameCard = false;
             findDocuments(db, (docs) => {
-                docs.forEach((deckCard) => {
-                    if (deckCard.img == card.img){
-                        return sameCard = true;
+                var sameCard = false;
+                for (let doc in docs){
+                    console.log(docs[doc]);
+                    if (docs[doc].img == card.img){
+                        let message = "This card is already in your deck!";
+                        console.log(message);
+                        sameCard = true;
+                        break;
                     }
-                })
-            })  
-
-            if (sameCard == false){
+                }
+                
+                if (sameCard == false){
                 dbo.collection("deck-node").insertOne(card, (err, res) => {
                     if (err) throw err;
                     console.log("1 Card Inserted");
                     db.close();
                     })
                     res.redirect("/");
-            } else {
-                let message = "This card is already in your deck!";
-                res.render("search", {deck: deck, message:message});  
-            }  
+                } else {
+                    let message = "This card is already in your deck!";
+                    res.render("search", {deck: deck, message:message});  
+                }  
+            })      
         })
     }   
 })
