@@ -49,7 +49,6 @@ app.get("/", (req, res) => {
         }
         
         findDocuments(db, (docs) => {
-            // console.log(docs);
             res.render("deck", {deck:docs});
         })
         
@@ -60,9 +59,7 @@ app.get("/search", (req, res) => {
     // Declare basic data 
     var message = "";
     var deck = [];
-    var card = {
-        img: null
-    };
+
     res.render("search", {deck:deck, message:message});
 })
 
@@ -118,6 +115,7 @@ app.post("/addCard", (req, res) => {
         img: req.body.card,
         number: req.body.number
     }
+
     deck.push(card);
 
     if (card.number > 0 && card.number < 5){
@@ -130,10 +128,7 @@ app.post("/addCard", (req, res) => {
             findDocuments(db, (docs) => {
                 var sameCard = false;
                 for (let doc in docs){
-                    console.log(docs[doc]);
                     if (docs[doc].img == card.img){
-                        let message = "This card is already in your deck!";
-                        console.log(message);
                         sameCard = true;
                         break;
                     }
@@ -152,6 +147,7 @@ app.post("/addCard", (req, res) => {
                 }  
             })      
         })
+
     } else {
         let message = "Must be between 1 and 4 copies!";
         res.render("search", {deck: deck, message:message}); 
@@ -187,8 +183,6 @@ app.post("/update", (req, res) => {
             })
         })
     }
-
-
 
     res.redirect("/");
 })
