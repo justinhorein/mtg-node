@@ -152,7 +152,10 @@ app.post("/addCard", (req, res) => {
                 }  
             })      
         })
-    }   
+    } else {
+        let message = "Must be between 1 and 4 copies!";
+        res.render("search", {deck: deck, message:message}); 
+    }
 })
 
 app.post("/update", (req, res) => {
